@@ -440,4 +440,4 @@ export const fakeApi = [
   },
 ];
 
-console.log(new Set(fakeApi.map((item) => item.name.split(" ")[0])))
+console.log(fakeApi.map((item) => item.name))
