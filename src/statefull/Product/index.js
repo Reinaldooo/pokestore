@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom"
 //
-import "./styles.css"
+import "./styles.scss"
 
 function Product() {
   const { product } = useParams()

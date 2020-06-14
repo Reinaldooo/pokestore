@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 
 //
-import "./styles.css"
-import Routes from "../../routes"
+import "./styles.scss";
+import Routes from "../../routes";
+import TopBar from "../TopBar";
 
 function App() {
   return (
     <div className="App">
-      {/* TopBar */}      
-        <Routes/>
+      <TopBar />
+      <Routes />
       {/* Footer */}
     </div>
   );

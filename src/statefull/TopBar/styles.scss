@@ -1,0 +1,46 @@
+.topbar {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px -26px 93px -3px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0px -26px 93px -3px rgba(0, 0, 0, .2);
+  box-shadow: 0px -26px 93px -3px rgba(0, 0, 0, .2);
+
+  @media screen and (max-width: 768px){
+    padding: 0 3rem;
+  }
+
+  &__logo {
+    height: 90%;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    cursor: pointer;
+    position: relative;
+    & + .topbar__button {
+      margin-left: 1.5rem;
+    }
+
+    &__counter {
+      position: absolute;
+      right: -5px;
+      top: -5px;
+      background-color: lightcoral;
+      border-radius: 50%;
+      height: 18px;
+      width: 18px;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
