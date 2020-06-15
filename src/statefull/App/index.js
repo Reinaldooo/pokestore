@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux"
 import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
-import Drawer from "../../stateless/Drawer";
 import { setProductsFetchLoading, setPRoductsFetchSuccess } from "../../actions"
 import { fakeApi } from "../../services/fakeApi"
+import { createSlug } from "../../services/utils"
 
 function App() {
   const dispatch = useDispatch()
@@ -14,6 +14,11 @@ function App() {
   useEffect(() => {
     dispatch(setProductsFetchLoading())
     setTimeout(() => {
+      // Create unique ids for products, since a real API would have them
+      fakeApi.forEach((product) => {
+        product["id"] = createSlug(product.name)+"-"+product.code_color
+      })
+      fakeApi.sort((a,b) => b.discount_percentage > a.discount_percentage)
       dispatch(setPRoductsFetchSuccess(fakeApi))
     }, 1000);
   }, [dispatch])
@@ -22,7 +27,9 @@ function App() {
     <div className="App">
       <TopBar />
       <Routes />
-      <Drawer/>
+      {/* <Cart/>
+      <Wishlist/>
+      <Search/> */}
     </div>
   );
 }

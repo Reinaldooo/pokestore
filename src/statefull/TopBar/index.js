@@ -22,7 +22,7 @@ function TopBar() {
               <FiHeart size="25px"/>
             </div>
             <div className="topbar__button">
-              <span className="topbar__button__counter">2</span>
+              <span className="topbar__button__counter">22</span>
               <FiShoppingCart size="25px"/>
             </div>
           </div>

@@ -1,28 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 //
 import "./styles.scss";
-import ImgWithLoader from "../../stateless/ImgWithLoader";
+import Loading from "../../stateless/Loading";
+import Footer from "../../stateless/Footer";
+import ProductCard from "../../stateless/ProductCard";
+import { placeholder } from "../../services/utils";
 
 function Product() {
-  // const { product } = useParams()
-  return (
+  const { productId } = useParams()
+  const { products } = useSelector(state => state.products)
+  const product = products.find((prod) => prod.id === productId)
+
+
+  return !product ? (
+    <Loading/>
+  ) : (
+    <>
     <div className="container">
       <div className="product">
         <figure className="product__image">
-          <ImgWithLoader
-            src="https://viniciusvinna.netlify.app/assets/api-fashionista/20002581_611_catalog_1.jpg"
-            iWidth="470px"
-            iHeight="594px"
-            alt=""
+          <img
+            src={product.image ? product.image : placeholder}
+            alt={product.name}
           />
         </figure>
         <div className="product__content">
-          <div className="product__name">BLUSA LAÇO ISTAMBUL</div>
+          <div className="product__name">{product.name}</div>
           <div className="product__price">
             <span className="product__disc-price">R$ 190</span>
-            R$ 149,90
-            <span> ou 3x R$ 49,97</span>
+            {product.actual_price}
+            <span> {product.installments}</span>
           </div>
           <div className="product__sizes">
             <button className="product__size product__size--selected" selected>
@@ -43,89 +52,14 @@ function Product() {
       <div className="product__similar">
         <h3>Produtos similares</h3>
         <div className="product__similar__cards">
-          <Link to="/produto/teste" className="card-wrapper">
-            <div className="card">
-              <figure className="card__image">
-                <ImgWithLoader
-                  src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-                  alt="test"
-                />
-              </figure>
-              <div className="card__info">
-                <div className="card__name">jsdhfgjkhksdjfg</div>
-                <div className="card__values">
-                  <span className="card__price">
-                    <span>R$ 196,00</span>
-                    R$ 481
-                  </span>
-                  <span className="card__installments">3x R$120</span>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/produto/teste" className="card-wrapper">
-            <div className="card">
-              <figure className="card__image">
-                <ImgWithLoader
-                  src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-                  alt="test"
-                />
-              </figure>
-              <div className="card__info">
-                <div className="card__name">jsdhfgjkhksdjfg</div>
-                <div className="card__values">
-                  <span className="card__price">
-                    <span>R$ 196,00</span>
-                    R$ 481
-                  </span>
-                  <span className="card__installments">3x R$120</span>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/produto/teste" className="card-wrapper">
-            <div className="card">
-              <figure className="card__image">
-                <ImgWithLoader
-                  src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-                  alt="test"
-                />
-              </figure>
-              <div className="card__info">
-                <div className="card__name">jsdhfgjkhksdjfg</div>
-                <div className="card__values">
-                  <span className="card__price">
-                    <span>R$ 196,00</span>
-                    R$ 481
-                  </span>
-                  <span className="card__installments">3x R$120</span>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/produto/teste" className="card-wrapper">
-            <div className="card">
-              <figure className="card__image">
-                <ImgWithLoader
-                  src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-                  alt="test"
-                />
-              </figure>
-              <div className="card__info">
-                <div className="card__name">jsdhfgjkhksdjfg</div>
-                <div className="card__values">
-                  <span className="card__price">
-                    <span>R$ 196,00</span>
-                    R$ 481
-                  </span>
-                  <span className="card__installments">3x R$120</span>
-                </div>
-              </div>
-            </div>
-          </Link>
+          {
+            products.slice(0,4).map((product, i) => <ProductCard product={product} key={product.name+i}/>)
+          }
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

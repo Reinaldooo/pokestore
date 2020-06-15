@@ -9,7 +9,7 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Main} />
-      <Route exact path="/produto/:product" component={Product} />
+      <Route exact path="/produto/:productId" component={Product} />
       <Route component={Error404}/>
     </Switch>
   );
