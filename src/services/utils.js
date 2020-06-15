@@ -4,3 +4,8 @@ export function createSlug(string) {
   if(!string) return "";
   return string.trim().toLowerCase().replace(/\s/g, '-');
 }
+
+export function strPriceToNum(string) {
+  if(!string) return 0;
+  return parseFloat(string.trim().replace("R$ ", "").replace(",", "."))
+}

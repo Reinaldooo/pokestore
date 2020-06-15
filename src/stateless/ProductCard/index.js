@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FaCartPlus } from "react-icons/fa"
 //
 import "./styles.scss";
 import ImgWithLoader from "../../stateless/ImgWithLoader";
-import { placeholder } from "../../services/utils";
+import { placeholder, strPriceToNum } from "../../services/utils";
+import { setAddProductCart, setRemoveProductCart } from "../../actions";
 
 function ProductCard({ product }) {
+  const dispatch = useDispatch()
   const {
     image,
     name,
@@ -19,11 +22,14 @@ function ProductCard({ product }) {
   } = product;
 
   const handleCartClick = () => {
-    console.log("cart")
+    const parsedProduct = {...product}
+    parsedProduct.actual_price = strPriceToNum(parsedProduct.actual_price)
+    dispatch(setAddProductCart(parsedProduct))
   }
 
   return (
     <div className="card-wrapper">
+      <button onClick={() => dispatch(setRemoveProductCart(product.id))}>lsdjhlk</button>
       {
         sizes[0].size === "U" &&
         <span className="card__add" onClick={handleCartClick}>

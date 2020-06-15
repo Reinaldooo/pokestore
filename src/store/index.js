@@ -7,7 +7,7 @@ import rootReducer from "../reducers";
 const persistConfig = {
   key: "fashionStorage",
   storage,
-  blacklist: ["products"]
+  blacklist: ["products", "cart"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
