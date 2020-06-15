@@ -25,7 +25,12 @@
 .card-wrapper {
   flex: 0 0 25%;
   padding: 15px;
+  text-decoration: none;
+  color: #222;
 
+  @media screen and (max-width: 1100px) {
+    padding: 7px;
+  }
   @media screen and (max-width: 768px) {
     flex: 0 0 50%;
     padding: 2px;
@@ -48,15 +53,25 @@
   }
 
   &__image {
+    overflow: hidden;
     width: 100%;
+
+    & img {
+      width: 100%;
+    }
   }
   &__name {
     margin: 10px auto;
-    padding: 0 10px;
-    font-weight: bold;
+    height: 30px;
+    padding-left: 10px;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 0.8rem;
     color: #e3566e;
+
+    @media screen and (min-width: 768px) {
+      height: 15px;
+    }
   }
   &__values {
     display: flex;

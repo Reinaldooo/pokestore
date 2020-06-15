@@ -5,6 +5,7 @@ import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
 import Footer from "../../stateless/Footer";
+import Drawer from "../../stateless/Drawer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <TopBar />
       <Routes />
       <Footer />
+      <Drawer/>
     </div>
   );
 }

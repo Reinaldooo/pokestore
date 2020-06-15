@@ -15,15 +15,15 @@ function TopBar() {
           </Link>
           <div className="topbar__buttons">
             <div className="topbar__button">
-              <FiSearch size="1.5rem"/>
+              <FiSearch size="25px"/>
             </div>
             <div className="topbar__button">
             <span className="topbar__button__counter">0</span>
-              <FiHeart size="1.5rem"/>
+              <FiHeart size="25px"/>
             </div>
             <div className="topbar__button">
               <span className="topbar__button__counter">2</span>
-              <FiShoppingCart size="1.5rem"/>
+              <FiShoppingCart size="25px"/>
             </div>
           </div>
         </div>
