@@ -1,11 +1,13 @@
 import React from 'react';
 import { FiSearch, FiHeart, FiShoppingCart } from 'react-icons/fi';
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 //
 import "./styles.scss"
 import Logo from "../../assets/logo.svg"
 
 function TopBar() {
+  const { numProducts } = useSelector(state => state.cart)
   return (
     <div className="topbar-wrapper">
       <div className="container">
@@ -22,7 +24,7 @@ function TopBar() {
               <FiHeart size="25px"/>
             </div>
             <div className="topbar__button">
-              <span className="topbar__button__counter">22</span>
+              <span className="topbar__button__counter">{ numProducts || 0 }</span>
               <FiShoppingCart size="25px"/>
             </div>
           </div>
