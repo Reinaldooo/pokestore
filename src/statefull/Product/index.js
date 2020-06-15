@@ -1,22 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { FiHeart } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 // import { FaHeart } from 'react-icons/fa';
 //
 import "./styles.scss";
 import Loading from "../../stateless/Loading";
 import Footer from "../../stateless/Footer";
 import SimilarProducts from "../../stateless/SimilarProducts";
-import { placeholder } from "../../services/utils";
+import { placeholder, strPriceToNum } from "../../services/utils";
+import { AddProductCart } from "../../actions";
 const idxSimilares = Math.round(Math.random()*18)
 
 function Product() {
-  const { productId } = useParams()
-  const { products } = useSelector(state => state.products)
-  const product = products.find((prod) => prod.id === productId)
-  const availableSizes = product?.sizes.filter((size) => size.available)
-  const [sizeSelected, setSizeSelected] = useState(null)
+  const dispatch = useDispatch();
+  const { productId } = useParams();
+  const { products } = useSelector(state => state.products);
+  const product = products.find((prod) => prod.id === productId);
+  const availableSizes = product?.sizes.filter((size) => size.available);
+  const [sizeSelected, setSizeSelected] = useState(null);
+  
+  const handleAddCart = () => {
+    if (!sizeSelected) {
+      toast.error("Por favor selecione um tamanho!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+    const parsedProduct = {...product}
+    parsedProduct.actual_price = strPriceToNum(parsedProduct.actual_price)
+    dispatch(AddProductCart(parsedProduct))
+  };
 
   useEffect(() => {
     if(availableSizes?.length === 1) setSizeSelected(availableSizes[0])
@@ -27,7 +48,6 @@ function Product() {
   ) : (
     <>
     <div className="container">
-      { console.log(sizeSelected, "s") }
       <div className="product">
         <div className="product__add-wishlist">
           <button><FiHeart/></button>
@@ -59,7 +79,7 @@ function Product() {
             }
           </div>
           <div className="product__add-cart">
-            <button>Adicionar à cesta</button>
+            <button onClick={handleAddCart}>Adicionar à cesta</button>
           </div>          
           <div className="product__description">
             Descrição não fornecida pelo fabricante.

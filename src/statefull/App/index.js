@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //
 import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
+import Cart from "../Cart";
 import { setProductsFetchLoading, setProductsFetchSuccess } from "../../actions"
 import { fakeApi } from "../../services/fakeApi"
 import { createSlug } from "../../services/utils"
@@ -20,16 +23,17 @@ function App() {
       })
       fakeApi.sort((a,b) => b.discount_percentage > a.discount_percentage)
       dispatch(setProductsFetchSuccess(fakeApi))
-    }, 2000);
+    }, 1000);
   }, [dispatch])
 
   return (
     <div className="App">
       <TopBar />
       <Routes />
-      {/* <Cart/>
-      <Wishlist/>
-      <Search/> */}
+      <Cart/>
+      {/* <Wishlist/> */}
+      {/* <Search/> */}
+      <ToastContainer />
     </div>
   );
 }

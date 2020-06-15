@@ -22,11 +22,11 @@ const productsReducer = (state = initialState, action) => {
             qty: state.cart[payload.id] ? state.cart[payload.id].qty + 1 : 1,
             product: payload,
             totalProdPrice: state.cart[payload.id] ?
-            state.cart[payload.id].totalProdPrice + payload.actual_price :
+            (state.cart[payload.id].totalProdPrice + payload.actual_price) :
             payload.actual_price
           }
         },
-        totalPrice: state.totalPrice + payload.actual_price,
+        totalPrice: (state.totalPrice + payload.actual_price),
         numProducts: state.numProducts+=1
       }
     case REMOVE_PRODUCT_CART:

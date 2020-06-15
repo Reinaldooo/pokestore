@@ -6,7 +6,7 @@ import { FaCartPlus } from "react-icons/fa"
 import "./styles.scss";
 import ImgWithLoader from "../../stateless/ImgWithLoader";
 import { placeholder, strPriceToNum } from "../../services/utils";
-import { setAddProductCart, setRemoveProductCart } from "../../actions";
+import { AddProductCart } from "../../actions";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch()
@@ -24,12 +24,11 @@ function ProductCard({ product }) {
   const handleCartClick = () => {
     const parsedProduct = {...product}
     parsedProduct.actual_price = strPriceToNum(parsedProduct.actual_price)
-    dispatch(setAddProductCart(parsedProduct))
+    dispatch(AddProductCart(parsedProduct))
   }
 
   return (
     <div className="card-wrapper">
-      <button onClick={() => dispatch(setRemoveProductCart(product.id))}>lsdjhlk</button>
       {
         sizes[0].size === "U" &&
         <span className="card__add" onClick={handleCartClick}>
