@@ -7,7 +7,7 @@ export const setProductsFetchLoading = () => {
   };
 };
 
-export const setPRoductsFetchSuccess = (data) => {
+export const setProductsFetchSuccess = (data) => {
   return {
     type: PRODUCTS_FETCH_SUCCESS,
     payload: data

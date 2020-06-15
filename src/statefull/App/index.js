@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
-import { setProductsFetchLoading, setPRoductsFetchSuccess } from "../../actions"
+import { setProductsFetchLoading, setProductsFetchSuccess } from "../../actions"
 import { fakeApi } from "../../services/fakeApi"
 import { createSlug } from "../../services/utils"
 
@@ -19,8 +19,8 @@ function App() {
         product["id"] = createSlug(product.name)+"-"+product.code_color
       })
       fakeApi.sort((a,b) => b.discount_percentage > a.discount_percentage)
-      dispatch(setPRoductsFetchSuccess(fakeApi))
-    }, 1000);
+      dispatch(setProductsFetchSuccess(fakeApi))
+    }, 2000);
   }, [dispatch])
 
   return (

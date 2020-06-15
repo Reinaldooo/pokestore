@@ -6,6 +6,7 @@
   background-color: #fff;
   border-radius: 20px;
   margin: 2rem auto 0;
+  position: relative;
 
   &__image {
     overflow: hidden;
@@ -85,25 +86,20 @@
     margin: 1.5rem 0;
   }
 
-  &__description {
-    margin-bottom: 20px;
+  &__add-wishlist button {
+    background-color: #fff;
+    border: none;
+    font-size: 40px;
+    color: #e3566e;
+    cursor: pointer;
+    padding: 0 20px;
+    margin: 1.5rem 0;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
-  &__similar {
-    & h3 {
-      text-align: center;
-      font-weight: 700;
-      color: #e3566e;
-      margin-top: 15px;
-      text-transform: uppercase;      
-    }
-    &__cards {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 0 0 2rem;
-      width: 100%;
-    }
+  &__description {
+    margin-bottom: 20px;
   }
 }

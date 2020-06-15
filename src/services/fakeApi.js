@@ -439,5 +439,3 @@ export const fakeApi = [
     sizes: [{ available: true, size: "U", sku: "4279_1000018_0_U" }],
   },
 ];
-
-console.log(fakeApi.map((item) => item.name))
