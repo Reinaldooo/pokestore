@@ -1,0 +1,60 @@
+.card-hz {
+  height: 200px;
+  width: 95%;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 15px auto 0;
+  padding: .5rem;
+  overflow: hidden;
+  display: flex;
+  color: #333;
+
+  &__image {
+    height: 100%;
+    margin-left: 10px;
+    & img {
+      height: 95%;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+
+  &__info {
+    display: flex;
+    margin-left: 20px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__text {
+    padding: 1rem 0;
+  }
+
+  &__buttons {
+    font-size: 22px;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+
+    & button {
+      background-color: #fff;
+      border: none;
+      font-size: 25px;
+      color: #333;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    & svg {
+      margin-right: 15px;
+    }
+    & span {
+      margin-right: 15px;
+    }
+  }
+  
+}

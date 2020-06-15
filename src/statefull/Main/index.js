@@ -5,7 +5,7 @@ import "./styles.scss";
 import main from "../../assets/main.jpg";
 import Loading from "../../stateless/Loading";
 import Footer from "../../stateless/Footer";
-import ProductCard from "../../stateless/ProductCard";
+import CardProduct from "../../stateless/CardProduct";
 
 function Main() {
   const { loading, products } = useSelector((state) => state.products);
@@ -22,7 +22,7 @@ function Main() {
               <div className="main__products">
                 {
                   products[0] && products.map((product, i) => (
-                    <ProductCard product={product} key={product.name + i} />
+                    <CardProduct product={product} key={product.name + i} />
                   ))
                 }
               </div>

@@ -1,7 +1,7 @@
 import React from "react";
 //
 import "./styles.scss"
-import ProductCard from "../ProductCard"
+import CardProduct from "../CardProduct"
 
 function SimilarProducts({ data }) {
   return (
@@ -9,7 +9,7 @@ function SimilarProducts({ data }) {
       <h3>Produtos similares</h3>
       <div className="product__similar__cards">
         {data.map((product, i) => (
-          <ProductCard product={product} key={product.name + i} />
+          <CardProduct product={product} key={product.name + i} />
         ))}
       </div>
     </div>

@@ -34,9 +34,11 @@ function Product() {
       });
       return;
     }
-    const parsedProduct = {...product}
-    parsedProduct.actual_price = strPriceToNum(parsedProduct.actual_price)
-    dispatch(AddProductCart(parsedProduct))
+    const handledProduct = {...product}
+    handledProduct.size = sizeSelected.size;
+    handledProduct.sku = sizeSelected.sku;
+    handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
+    dispatch(AddProductCart(handledProduct))
   };
 
   useEffect(() => {

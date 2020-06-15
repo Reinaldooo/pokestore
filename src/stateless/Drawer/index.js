@@ -6,24 +6,10 @@ import './styles.scss';
 import { closeCartDrawer } from "../../actions"
 
 
-export default function Drawer({ children, title, footer, viewName }) {
+export default function Drawer({ children, title }) {
   const dispatch = useDispatch()
   const container = useRef(null);
   const shouldShow = useSelector((state) => state.cart);
-
-  // const dispatch = useDispatch();
-  // const view = useSelector((state) => state.drawer.view);
-
-  // function handleOpenDrawer() {
-  //   if (showDrawer) {
-  //     drawerContainer.current.classList.toggle('drawer_container--open');
-  //     setTimeout(() => {
-  //       dispatch(closeDrawer());
-  //     }, 500);
-  //   } else {
-  //     dispatch(openDrawer());
-  //   }
-  // }
 
   return shouldShow ? (
       <div className="drawer">
@@ -39,7 +25,6 @@ export default function Drawer({ children, title, footer, viewName }) {
             </div>
           </div>
           <div className="drawer__body">{children}</div>
-          {footer && <div className="drawer__footer">{footer}</div>}
         </div>
       </div>
     ) : null

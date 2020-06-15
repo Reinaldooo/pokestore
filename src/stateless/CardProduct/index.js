@@ -22,9 +22,11 @@ function ProductCard({ product }) {
   } = product;
 
   const handleCartClick = () => {
-    const parsedProduct = {...product}
-    parsedProduct.actual_price = strPriceToNum(parsedProduct.actual_price)
-    dispatch(AddProductCart(parsedProduct))
+    const handledProduct = {...product}
+    handledProduct.size = handledProduct.sizes[0].size;
+    handledProduct.sku = handledProduct.sizes[0].sku;
+    handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
+    dispatch(AddProductCart(handledProduct))
   }
 
   return (

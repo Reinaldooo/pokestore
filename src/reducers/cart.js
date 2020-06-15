@@ -21,11 +21,11 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          [payload.id]: {
-            qty: state.cart[payload.id] ? state.cart[payload.id].qty + 1 : 1,
+          [payload.sku]: {
+            qty: state.cart[payload.sku] ? state.cart[payload.sku].qty + 1 : 1,
             product: payload,
-            totalProdPrice: state.cart[payload.id] ?
-            (state.cart[payload.id].totalProdPrice + payload.actual_price) :
+            totalProdPrice: state.cart[payload.sku] ?
+            (state.cart[payload.sku].totalProdPrice + payload.actual_price) :
             payload.actual_price
           }
         },
