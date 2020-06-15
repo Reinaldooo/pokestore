@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { FiArrowLeftCircle } from 'react-icons/fi';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //
 import './styles.scss';
-// import { openDrawer, closeDrawer } from '../../store/modules/drawer/actions';
+import { closeCartDrawer } from "../../actions"
 
 
 export default function Drawer({ children, title, footer, viewName }) {
+  const dispatch = useDispatch()
   const container = useRef(null);
-  const [show, setShow] = useState(false)
+  const shouldShow = useSelector((state) => state.cart);
 
   // const dispatch = useDispatch();
-  // const showDrawer = useSelector((state) => state.drawer.showDrawer);
   // const view = useSelector((state) => state.drawer.view);
 
   // function handleOpenDrawer() {
@@ -25,20 +25,17 @@ export default function Drawer({ children, title, footer, viewName }) {
   //   }
   // }
 
-  return show ? (
+  return shouldShow ? (
       <div className="drawer">
-        <div ref={container} className="drawer__container drawer_container--open">
+        <div ref={container} className="drawer__container drawer__container--open">
           <div className="drawer__header">
             <button onClick={() => {
-              setShow(false)
-              setTimeout(() => {
-                setShow(true)
-              }, 2000);
+              dispatch(closeCartDrawer())
             }}>
             <FiArrowLeftCircle size="1.5rem"/>
             </button>
             <div className="drawer__header__title__container">
-              <h4 className="drawer__header__title">title</h4>
+              <h4 className="drawer__header__title">{title}</h4>
             </div>
           </div>
           <div className="drawer__body">{children}</div>

@@ -1,12 +1,15 @@
 import {
   ADD_PRODUCT_CART,
-  REMOVE_PRODUCT_CART
+  REMOVE_PRODUCT_CART,
+  CLOSE_CART_DRAWER,
+  OPEN_CART_DRAWER
 } from "../actions"
 
 const initialState = {
   cart: {},
   totalPrice: 0,
-  numProducts: 0
+  numProducts: 0,
+  shouldShow: false
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -36,6 +39,16 @@ const productsReducer = (state = initialState, action) => {
           ...state.cart,
           [payload]: null
         }
+      }
+    case CLOSE_CART_DRAWER:
+      return {
+        ...state,
+        shouldShow: false
+      }
+    case OPEN_CART_DRAWER:
+      return {
+        ...state,
+        shouldShow: true
       }
     default:
       return state;

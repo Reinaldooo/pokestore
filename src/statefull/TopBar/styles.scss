@@ -29,6 +29,8 @@
   &__button {
     cursor: pointer;
     position: relative;
+    background-color: transparent;
+    border: none;
     & + .topbar__button {
       margin-left: 1.5rem;
     }
