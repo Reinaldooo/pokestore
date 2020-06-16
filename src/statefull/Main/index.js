@@ -8,11 +8,18 @@ import Footer from "../../stateless/Footer";
 import CardProduct from "../../stateless/CardProduct";
 
 function Main() {
-  const { loading, products } = useSelector((state) => state.products);
+  const { loading, products, fetchProductsError } = useSelector((state) => state.products);
 
   return (
     <div className="main">
       <img src={main} className="main__image" alt="promotion" />
+      {
+        fetchProductsError && (
+        <p className="fetch-error">
+          Ops, algo deu errado! Por favor recarregue a página. :)
+        </p>
+        )
+      }
       {
         loading ? (
           <Loading />

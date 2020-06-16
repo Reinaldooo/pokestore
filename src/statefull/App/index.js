@@ -7,23 +7,26 @@ import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
 import Cart from "../Cart";
-import { setProductsFetchLoading, setProductsFetchSuccess } from "../../actions"
-import { fakeApi } from "../../services/fakeApi"
+import { setProductsFetchSuccess, setProductsFetchError } from "../../actions"
 import { createSlug } from "../../services/utils"
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setProductsFetchLoading())
-    setTimeout(() => {
-      // Create unique ids for products, since a real API would have them
-      fakeApi.forEach((product) => {
+    fetch("https://5e9935925eabe7001681c856.mockapi.io/api/1/catalog")
+    .then((data) => data.json())
+    .then((data) => {
+      // Create some unique id for the products since a real API
+      // would have it
+      data.forEach((product) => {
         product["id"] = createSlug(product.name)+"-"+product.code_color
       })
-      fakeApi.sort((a,b) => b.discount_percentage > a.discount_percentage)
-      dispatch(setProductsFetchSuccess(fakeApi))
-    }, 1000);
+      data.sort((a,b) => b.discount_percentage > a.discount_percentage)
+      dispatch(setProductsFetchSuccess(data))
+    })
+    .catch((error) => dispatch(setProductsFetchError(error)))
+
   }, [dispatch])
 
   return (

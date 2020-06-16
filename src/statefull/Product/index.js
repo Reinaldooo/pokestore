@@ -16,7 +16,7 @@ const idxSimilares = Math.round(Math.random()*18)
 function Product() {
   const dispatch = useDispatch();
   const { productId } = useParams();
-  const { products } = useSelector(state => state.products);
+  const { products, fetchProductsError } = useSelector(state => state.products);
   const product = products.find((prod) => prod.id === productId);
   const availableSizes = product?.sizes.filter((size) => size.available);
   const [sizeSelected, setSizeSelected] = useState(null);
@@ -55,7 +55,16 @@ function Product() {
   }, [availableSizes])
 
   return !product ? (
-    <Loading/>
+    <>
+      {
+        fetchProductsError && (
+        <p className="fetch-error">
+          Ops, algo deu errado! Por favor recarregue a página. :)
+        </p>
+        )
+      }
+      <Loading/>
+    </>
   ) : (
     <>
     <div className="container">

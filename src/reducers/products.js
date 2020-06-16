@@ -1,11 +1,14 @@
 import {
   PRODUCTS_FETCH_LOADING,
-  PRODUCTS_FETCH_SUCCESS
+  PRODUCTS_FETCH_SUCCESS,
+  PRODUCTS_FETCH_ERROR
 } from "../actions"
 
 const initialState = {
   products: [],
   loading: true,
+  fetchProductsError: false,
+  errorMessage: null
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -22,6 +25,12 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         products: payload
+      }
+    case PRODUCTS_FETCH_ERROR:
+      return {
+        ...state,
+        fetchProductsError: true,
+        errorMessage: payload
       }
     default:
       return state;
