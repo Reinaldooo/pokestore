@@ -10,7 +10,7 @@ import Loading from "../../stateless/Loading";
 import Footer from "../../stateless/Footer";
 import SimilarProducts from "../../stateless/SimilarProducts";
 import { placeholder, strPriceToNum } from "../../services/utils";
-import { AddProductCart } from "../../actions";
+import { addProductCart } from "../../actions";
 const idxSimilares = Math.round(Math.random()*18)
 
 function Product() {
@@ -38,7 +38,7 @@ function Product() {
     handledProduct.size = sizeSelected.size;
     handledProduct.sku = sizeSelected.sku;
     handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
-    dispatch(AddProductCart(handledProduct))
+    dispatch(addProductCart(handledProduct))
   };
 
   useEffect(() => {

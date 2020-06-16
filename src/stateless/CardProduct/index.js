@@ -6,7 +6,7 @@ import { FaCartPlus } from "react-icons/fa"
 import "./styles.scss";
 import ImgWithLoader from "../../stateless/ImgWithLoader";
 import { placeholder, strPriceToNum } from "../../services/utils";
-import { AddProductCart } from "../../actions";
+import { addProductCart } from "../../actions";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ function ProductCard({ product }) {
     handledProduct.size = handledProduct.sizes[0].size;
     handledProduct.sku = handledProduct.sizes[0].sku;
     handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
-    dispatch(AddProductCart(handledProduct))
+    dispatch(addProductCart(handledProduct))
   }
 
   return (

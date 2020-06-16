@@ -9,12 +9,16 @@ import { numPriceToStr } from "../../services/utils"
 function Cart() {
   const { shouldShow, cart, totalPrice } = useSelector(state => state.cart)
   const cartKeys = Object.keys(cart)
+  // As "deleted" items are just set to null, this var will
+  // track if there is real items on the cart, or just deleted ones
+  let validItems = 0
   return shouldShow ? (
-    <Drawer title={`Total: ${numPriceToStr(totalPrice)}`}>      
+    <Drawer title={totalPrice ? `Total: ${numPriceToStr(totalPrice)}` : ""}> 
       {
         cartKeys[0] &&
-          cartKeys.map((key) => {
+          cartKeys.map((key, idx) => {
             if (cart[key]) {
+              validItems++
               return (
                 <CardCartItem
                   key={cart[key].product.sku}
@@ -24,9 +28,15 @@ function Cart() {
                 />
               );
             }
+            if(idx === cartKeys.length - 1 && validItems) {
+              return <button className="drawer__checkout">Finalizar compra</button>
+            }
+            return false
           })
       }
-      <button className="drawer__checkout">Finalizar compra</button>
+      {
+        !validItems && <p className="drawer__empty">Ops, nenhum item no carrinho! :/</p>
+      }
     </Drawer>
   ) : null;
 }

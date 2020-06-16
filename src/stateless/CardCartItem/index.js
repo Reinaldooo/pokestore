@@ -5,9 +5,20 @@ import { BsTrash  } from 'react-icons/bs';
 //
 import "./styles.scss";
 import { placeholder, numPriceToStr } from "../../services/utils";
+import { removeProductCart, increaseProductCartQty,decreaseProductCartQty } from "../../actions";
 
 function CardCartItem({ product, qty, totalProdPrice }) {
   const dispatch = useDispatch();
+
+  const handleRemove = () => {
+    dispatch(removeProductCart(product.sku))
+  }
+  const handleIncrement = () => {
+    dispatch(increaseProductCartQty(product.sku))
+  }
+  const handleDecrement = () => {
+    dispatch(decreaseProductCartQty(product.sku))
+  }
 
   return (
     <div className="card-hz">
@@ -24,10 +35,10 @@ function CardCartItem({ product, qty, totalProdPrice }) {
           </div>
         </div>
         <div className="card-hz__buttons">
-          <button><FiPlusCircle/></button>
+          <button onClick={handleIncrement}><FiPlusCircle/></button>
           <span>{qty}</span>
-          <button><FiMinusCircle/></button>
-          <button><BsTrash/></button>
+          <button onClick={handleDecrement}><FiMinusCircle/></button>
+          <button onClick={handleRemove}><BsTrash/></button>
         </div>
       </div>
     </div>

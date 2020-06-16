@@ -11,7 +11,6 @@ export function strPriceToNum(string) {
 }
 
 export function numPriceToStr(num) {
-  console.log(num)
   if(!num) return "";
   return "R$ " + num.toFixed(2)
 }
