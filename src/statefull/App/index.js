@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch("https://5e9935925eabe7001681c856.mockapi.io/api/1/catalog")
+    fetch("https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog")
     .then((data) => data.json())
     .then((data) => {
       // Create some unique id for the products since a real API
