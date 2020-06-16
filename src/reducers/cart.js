@@ -28,14 +28,14 @@ const productsReducer = (state = initialState, action) => {
           [payload.sku]: {
             qty: state.cart[payload.sku] ? state.cart[payload.sku].qty + 1 : 1,
             product: payload,
-            totalProdPrice: state.cart[payload.sku] ?
-            (state.cart[payload.sku].totalProdPrice + payload.actual_price) :
-            payload.actual_price
-          }
+            totalProdPrice: state.cart[payload.sku]
+              ? state.cart[payload.sku].totalProdPrice + payload.actual_price
+              : payload.actual_price,
+          },
         },
-        totalPrice: (state.totalPrice + payload.actual_price),
-        numProducts: state.numProducts+=1
-      }
+        totalPrice: state.totalPrice + payload.actual_price,
+        numProducts: (state.numProducts += 1),
+      };
     case REMOVE_PRODUCT_CART:
       return {
         ...state,
@@ -43,9 +43,9 @@ const productsReducer = (state = initialState, action) => {
         totalPrice: state.totalPrice - state.cart[payload].totalProdPrice,
         cart: {
           ...state.cart,
-          [payload]: null
-        }
-      }
+          [payload]: null,
+        },
+      };
     case INCREASE_PRODUCT_CART_QTY:
       return {
         ...state,
@@ -56,22 +56,22 @@ const productsReducer = (state = initialState, action) => {
           [payload]: {
             ...state.cart[payload],
             qty: state.cart[payload].qty + 1,
-            totalProdPrice: state.cart[payload].totalProdPrice +
-            product.actual_price
-          }
-        }
-      }
+            totalProdPrice:
+              state.cart[payload].totalProdPrice + product.actual_price,
+          },
+        },
+      };
     case DECREASE_PRODUCT_CART_QTY:
-      if(state.cart[payload].qty === 1) {
+      if (state.cart[payload].qty === 1) {
         return {
           ...state,
           numProducts: state.numProducts - 1,
           totalPrice: state.totalPrice - state.cart[payload].totalProdPrice,
           cart: {
             ...state.cart,
-            [payload]: null
-          }
-        }
+            [payload]: null,
+          },
+        };
       }
       return {
         ...state,
@@ -82,23 +82,28 @@ const productsReducer = (state = initialState, action) => {
           [payload]: {
             ...state.cart[payload],
             qty: state.cart[payload].qty - 1,
-            totalProdPrice: state.cart[payload].totalProdPrice -
-            product.actual_price
-          }
-        }
-      }
+            totalProdPrice:
+              state.cart[payload].totalProdPrice - product.actual_price,
+          },
+        },
+      };
     case CLEAR_CART:
-      return initialState
+      return {
+        cart: {},
+        totalPrice: 0,
+        numProducts: 0,
+        shouldShow: false,
+      };
     case CLOSE_CART_DRAWER:
       return {
         ...state,
-        shouldShow: false
-      }
+        shouldShow: false,
+      };
     case OPEN_CART_DRAWER:
       return {
         ...state,
-        shouldShow: true
-      }
+        shouldShow: true,
+      };
     default:
       return state;
   }
