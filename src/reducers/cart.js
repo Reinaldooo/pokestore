@@ -4,7 +4,8 @@ import {
   INCREASE_PRODUCT_CART_QTY,
   DECREASE_PRODUCT_CART_QTY,
   CLOSE_CART_DRAWER,
-  OPEN_CART_DRAWER
+  OPEN_CART_DRAWER,
+  CLEAR_CART
 } from "../actions"
 
 const initialState = {
@@ -86,6 +87,8 @@ const productsReducer = (state = initialState, action) => {
           }
         }
       }
+    case CLEAR_CART:
+      return initialState
     case CLOSE_CART_DRAWER:
       return {
         ...state,

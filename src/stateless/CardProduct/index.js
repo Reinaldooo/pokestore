@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { FaCartPlus } from "react-icons/fa"
 //
 import "./styles.scss";
@@ -27,6 +28,15 @@ function ProductCard({ product }) {
     handledProduct.sku = handledProduct.sizes[0].sku;
     handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
+    toast.success("Oba! Produto adicionado! :D", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   return (

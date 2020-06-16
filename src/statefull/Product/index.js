@@ -25,7 +25,7 @@ function Product() {
     if (!sizeSelected) {
       toast.error("Por favor selecione um tamanho!", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -39,6 +39,15 @@ function Product() {
     handledProduct.sku = sizeSelected.sku;
     handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
+    toast.success("Oba! Produto adicionado! :D", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   useEffect(() => {

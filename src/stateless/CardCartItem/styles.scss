@@ -1,4 +1,4 @@
-.card-hz {
+.card-cart-item {
   height: 200px;
   width: 95%;
   background-color: #fff;
@@ -8,6 +8,10 @@
   overflow: hidden;
   display: flex;
   color: #333;
+
+  &:last-of-type {
+    margin-bottom: 10rem;
+  }
 
   &__image {
     height: 100%;

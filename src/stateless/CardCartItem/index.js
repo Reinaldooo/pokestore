@@ -21,20 +21,20 @@ function CardCartItem({ product, qty, totalProdPrice }) {
   }
 
   return (
-    <div className="card-hz">
-      <figure className="card-hz__image">
+    <div className="card-cart-item">
+      <figure className="card-cart-item__image">
         <img src={product.image || placeholder} alt={product.name}/>
       </figure>
-      <div className="card-hz__info">
-        <div className="card-hz__text">
-        <div className="card-hz__name">{product.name} </div>
-        <span className="card-hz__tam">Tam.: {product.size}</span>
+      <div className="card-cart-item__info">
+        <div className="card-cart-item__text">
+        <div className="card-cart-item__name">{product.name} </div>
+        <span className="card-cart-item__tam">Tam.: {product.size}</span>
           <div>
             {numPriceToStr(product.actual_price)} - Total:
             {" " + numPriceToStr(totalProdPrice)}
           </div>
         </div>
-        <div className="card-hz__buttons">
+        <div className="card-cart-item__buttons">
           <button onClick={handleIncrement}><FiPlusCircle/></button>
           <span>{qty}</span>
           <button onClick={handleDecrement}><FiMinusCircle/></button>
