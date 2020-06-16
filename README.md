@@ -1,5 +1,5 @@
 <p  align="center">
-<img  height="200px"  src="./img/js.svg">
+<img  height="200px"  src="./docs/js.svg">
 </p>
 
 <p  align="center">
