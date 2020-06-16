@@ -25,6 +25,14 @@
     font-weight: 700;
   }
 
+  &__price {
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+
   &__info {
     display: flex;
     margin-left: 20px;
