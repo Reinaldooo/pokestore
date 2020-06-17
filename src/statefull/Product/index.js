@@ -16,10 +16,20 @@ const idxSimilares = Math.round(Math.random()*18)
 function Product() {
   const dispatch = useDispatch();
   const { productId } = useParams();
-  const { products, fetchProductsError } = useSelector(state => state.products);
-  const product = products.find((prod) => prod.id === productId);
+  const { products, fetchProductsError } = useSelector(
+    (state) => state.products
+  );
+  const prodIdx = products.findIndex((prod) => (prod.id === productId));
+  const product = products[prodIdx];
   const availableSizes = product?.sizes.filter((size) => size.available);
   const [sizeSelected, setSizeSelected] = useState(null);
+
+  const genSimilar = () => {
+    // The api have 22 products
+    return prodIdx > 17 ?
+    products.slice(2,6) :
+    products.slice(prodIdx+1, prodIdx+5)
+  }
   
   const handleAddCart = () => {
     if (!sizeSelected) {
@@ -117,7 +127,7 @@ function Product() {
           </div>
         </div>
       </div>
-      <SimilarProducts data={products.slice(idxSimilares, idxSimilares + 4)}/>
+      <SimilarProducts data={genSimilar()}/>
     </div>
     <Footer/>
     </>
