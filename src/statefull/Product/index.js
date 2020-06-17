@@ -46,6 +46,14 @@ function Product() {
     });
   };
 
+  const handleSizeSelect = (size) => {
+    if (size === sizeSelected) {
+      setSizeSelected(null);
+      return;
+    }
+    setSizeSelected(size);
+  };
+
   useEffect(() => {
     if(availableSizes?.length === 1) setSizeSelected(availableSizes[0])
   }, [availableSizes])
@@ -91,8 +99,10 @@ function Product() {
               availableSizes.map((size) => (
                 <button
                   key={size.sku}
-                  className={`product__size ${sizeSelected === size ? "product__size--selected" : ""}`}
-                  onClick={() => setSizeSelected(size)}
+                  className={`product__size ${
+                    sizeSelected === size ? "product__size--selected" : ""
+                  }`}
+                  onClick={() => handleSizeSelect(size)}
                 >
                   {size.size}
                 </button>
