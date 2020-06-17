@@ -52,29 +52,6 @@
     }
   }
 
-  &__sizes {
-    padding: 1rem 0;
-  }
-
-  &__size {
-    width: 40px;
-    height: 40px;
-    margin-right: 1rem;
-    background-color: #fff;
-    border: 2px solid #e3566e;
-    border-radius: 50%;
-    font-size: 18px;
-    font-weight: 700;
-    color: #e3566e;
-    cursor: pointer;
-
-    &--selected {
-      border: 2px solid #fff;
-      background-color: #e3566e;
-      color: #fff;
-    }
-  }
-
   &__add-cart button {
     background-color: #e3566e;
     border: 2px solid #fff;

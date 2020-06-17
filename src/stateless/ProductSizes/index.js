@@ -1,4 +1,6 @@
 import React from "react";
+//
+import "./styles.scss"
 
 function ProductSizes({ availableSizes, handleSizeSelect, sizeSelected }) {
   return (
