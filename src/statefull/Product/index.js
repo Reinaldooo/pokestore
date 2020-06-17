@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import "./styles.scss";
 import Loading from "../../stateless/Loading";
 import Footer from "../../stateless/Footer";
+import ProductSizes from "../../stateless/ProductSizes";
 import SimilarProducts from "../../stateless/SimilarProducts";
 import { placeholder, strPriceToNum } from "../../services/utils";
 import { addProductCart } from "../../actions";
@@ -74,7 +75,7 @@ function Product() {
       {
         fetchProductsError && (
         <p className="fetch-error">
-          Ops, algo deu errado! Por favor recarregue a página. :)
+          Ops, algo deu errado! Por favor recarregue a página. :D
         </p>
         )
       }
@@ -105,26 +106,16 @@ function Product() {
             {product.actual_price}
             <span> {product.installments}</span>
           </div>
-          <div className="product__sizes">
-            {
-              availableSizes.map((size) => (
-                <button
-                  key={size.sku}
-                  className={`product__size ${
-                    sizeSelected === size ? "product__size--selected" : ""
-                  }`}
-                  onClick={() => handleSizeSelect(size)}
-                >
-                  {size.size}
-                </button>
-              ))
-            }
-          </div>
+          <ProductSizes
+            availableSizes={availableSizes}
+            handleSizeSelect={handleSizeSelect}
+            sizeSelected={sizeSelected}
+          />
           <div className="product__add-cart">
             <button onClick={handleAddCart}>Adicionar à cesta</button>
           </div>          
           <div className="product__description">
-            Descrição não fornecida pelo fabricante.
+            {product.description || "Descrição não fornecida pelo fabricante."}
           </div>
         </div>
       </div>
