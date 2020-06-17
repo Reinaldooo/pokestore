@@ -77,7 +77,12 @@ function Product() {
         <div className="product__content">
           <div className="product__name">{product.name}</div>
           <div className="product__price">
-            <span className="product__disc-price">R$ 190</span>
+            {
+              product.discount_percentage &&
+              <span className="product__disc-price">
+                {product.regular_price}
+              </span>
+            }            
             {product.actual_price}
             <span> {product.installments}</span>
           </div>

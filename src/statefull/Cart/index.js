@@ -6,7 +6,7 @@ import "./styles.scss";
 import Drawer from "../../stateless/Drawer";
 import CardCartItem from "../../stateless/CardCartItem";
 import { numPriceToStr } from "../../services/utils";
-import { clearCart, closeCartDrawer } from "../../actions";
+import { clearCart } from "../../actions";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -22,9 +22,6 @@ function Cart() {
       closeOnClick: true,
       progress: undefined,
     });
-    // setTimeout(() => {
-    //   dispatch(closeCartDrawer())
-    // }, 200);
   };
 
   return shouldShow ? (
