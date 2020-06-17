@@ -22,7 +22,6 @@ function App() {
       data.forEach((product) => {
         product["id"] = createSlug(product.name)+"-"+product.code_color
       })
-      data.sort((a,b) => b.discount_percentage > a.discount_percentage)
       dispatch(setProductsFetchSuccess(data))
     })
     .catch((error) => dispatch(setProductsFetchError(error)))
