@@ -11,7 +11,6 @@ import Footer from "../../stateless/Footer";
 import SimilarProducts from "../../stateless/SimilarProducts";
 import { placeholder, strPriceToNum } from "../../services/utils";
 import { addProductCart } from "../../actions";
-const idxSimilares = Math.round(Math.random()*18)
 
 function Product() {
   const dispatch = useDispatch();
@@ -19,13 +18,15 @@ function Product() {
   const { products, fetchProductsError } = useSelector(
     (state) => state.products
   );
+  // products.find wasn't used here because the index is needed on
+  // genSimilar() function
   const prodIdx = products.findIndex((prod) => (prod.id === productId));
   const product = products[prodIdx];
   const availableSizes = product?.sizes.filter((size) => size.available);
   const [sizeSelected, setSizeSelected] = useState(null);
 
   const genSimilar = () => {
-    // The api have 22 products
+    // The api have exactly 22 products
     return prodIdx > 17 ?
     products.slice(2,6) :
     products.slice(prodIdx+1, prodIdx+5)
