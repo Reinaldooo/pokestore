@@ -2,8 +2,12 @@ export const placeholder = "https://via.placeholder.com/470x594/FFFFFF/?text=Ima
 
 export function createSlug(string) {
   if(!string) return "";
-  return string.trim().toLowerCase().replace(/\s/g, '-');
+  return removerAcentos(string.trim()).toLowerCase().replace(/\s/g, '-');
 }
+
+export function removerAcentos(string) {
+  return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+} 
 
 export function strPriceToCents(string) {
   if(!string) return 0;

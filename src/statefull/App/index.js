@@ -9,7 +9,7 @@ import TopBar from "../TopBar";
 import Cart from "../Cart";
 import Search from "../Search";
 import { setProductsFetchSuccess, setProductsFetchError } from "../../actions"
-import { createSlug } from "../../services/utils"
+import { createSlug, removerAcentos } from "../../services/utils"
 
 function App() {
   const dispatch = useDispatch()
@@ -20,8 +20,9 @@ function App() {
     .then((data) => {
       // Create some unique id for the products since a real API
       // would have it
-      data.forEach((product) => {
-        product["id"] = createSlug(product.name)+"-"+product.code_color
+      data.forEach(product => {
+        product["id"] = createSlug(product.name)+"-"+product.code_color;
+        product["normalizedName"] = removerAcentos(product.name);
       })
       dispatch(setProductsFetchSuccess(data))
     })
