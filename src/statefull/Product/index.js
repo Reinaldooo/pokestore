@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { FiHeart } from 'react-icons/fi';
+import { useParams, useHistory } from "react-router-dom";
+import { FiHeart, FiArrowLeftCircle } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 // import { FaHeart } from 'react-icons/fa';
 //
@@ -15,6 +15,7 @@ import { addProductCart } from "../../actions";
 
 function Product() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { productId } = useParams();
   const { products, fetchProductsError } = useSelector(
     (state) => state.products
@@ -85,6 +86,11 @@ function Product() {
     <>
     <div className="container">
       <div className="product">
+        <div className="product__goback">
+          <button onClick={() => history.goBack()}>
+            <FiArrowLeftCircle/>
+          </button>
+        </div>
         <div className="product__add-wishlist">
           <button><FiHeart/></button>
         </div>

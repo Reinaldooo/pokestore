@@ -76,6 +76,19 @@
     top: 0;
   }
 
+  &__goback button {
+    background-color: #fff;
+    border: none;
+    font-size: 40px;
+    color: #e3566e;
+    cursor: pointer;
+    padding: 0 20px;
+    margin: 1.5rem 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
   &__description {
     margin-bottom: 20px;
   }
