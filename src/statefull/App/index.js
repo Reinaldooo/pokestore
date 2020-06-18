@@ -7,6 +7,7 @@ import "./styles.scss";
 import Routes from "../../routes";
 import TopBar from "../TopBar";
 import Cart from "../Cart";
+import Search from "../Search";
 import { setProductsFetchSuccess, setProductsFetchError } from "../../actions"
 import { createSlug } from "../../services/utils"
 
@@ -32,9 +33,9 @@ function App() {
     <div className="App">
       <TopBar />
       <Routes />
-      <Cart/>
+      <Search/>
       {/* <Wishlist/> */}
-      {/* <Search/> */}
+      <Cart/>
       <ToastContainer />
     </div>
   );

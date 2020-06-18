@@ -2,11 +2,10 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 //
-import "./styles.scss";
 import Drawer from "../../stateless/Drawer";
 import CardCartItem from "../../stateless/CardCartItem";
 import { numPriceToStr } from "../../services/utils";
-import { clearCart } from "../../actions";
+import { clearCart, closeCartDrawer } from "../../actions";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -25,7 +24,10 @@ function Cart() {
   };
 
   return shouldShow ? (
-    <Drawer title={totalPrice ? `Total: ${numPriceToStr(totalPrice)}` : ""}>
+    <Drawer
+      title={totalPrice ? `Total: ${numPriceToStr(totalPrice)}` : ""}
+      closeFunction={closeCartDrawer}
+    >
       {totalPrice > 0 && (
         <button className="drawer__checkout" onClick={handleCheckout}>
           Finalizar compra

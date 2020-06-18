@@ -3,10 +3,9 @@ import { FiArrowLeftCircle } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 //
 import './styles.scss';
-import { closeCartDrawer } from "../../actions"
 
 
-export default function Drawer({ children, title }) {
+export default function Drawer({ children, title, closeFunction }) {
   const dispatch = useDispatch()
   const container = useRef(null);
   const shouldShow = useSelector((state) => state.cart);
@@ -16,7 +15,7 @@ export default function Drawer({ children, title }) {
         <div ref={container} className="drawer__container drawer__container--open">
           <div className="drawer__header">
             <button onClick={() => {
-              dispatch(closeCartDrawer())
+              dispatch(closeFunction())
             }}>
             <FiArrowLeftCircle size="1.5rem"/>
             </button>

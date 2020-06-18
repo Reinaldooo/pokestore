@@ -15,7 +15,7 @@ const initialState = {
   shouldShow: false
 };
 
-const productsReducer = (state = initialState, action) => {
+const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
   let { product } = state.cart[payload] || {}
   //
@@ -109,4 +109,4 @@ const productsReducer = (state = initialState, action) => {
   }
 };
 
-export default productsReducer;
+export default cartReducer;

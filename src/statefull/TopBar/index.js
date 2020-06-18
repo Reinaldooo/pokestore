@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 //
 import "./styles.scss"
 import Logo from "../../assets/logo.svg"
-import { openCartDrawer } from '../../actions';
+import { openCartDrawer, openSearchDrawer } from '../../actions';
 
 function TopBar() {
   const dispatch = useDispatch()
@@ -18,15 +18,25 @@ function TopBar() {
             <img src={Logo} alt="logo" className="topbar__logo"/>
           </Link>
           <div className="topbar__buttons">
-            <div className="topbar__button">
+            <button
+              className="topbar__button"
+              onClick={() => dispatch(openSearchDrawer())}
+            >
               <FiSearch size="25px"/>
-            </div>
-            <div className="topbar__button">
-            <span className="topbar__button__counter">0</span>
+            </button>
+            <button className="topbar__button">
+              <span className="topbar__button__counter">
+                0
+              </span>
               <FiHeart size="25px"/>
-            </div>
-            <button className="topbar__button" onClick={() => dispatch(openCartDrawer())}>
-              <span className="topbar__button__counter">{ numProducts || 0 }</span>
+            </button>
+            <button
+              className="topbar__button"
+              onClick={() => dispatch(openCartDrawer())}
+            >
+              <span className="topbar__button__counter">
+                { numProducts || 0 }
+              </span>
               <FiShoppingCart size="25px"/>
             </button>
           </div>
