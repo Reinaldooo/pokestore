@@ -5,9 +5,9 @@ export function createSlug(string) {
   return string.trim().toLowerCase().replace(/\s/g, '-');
 }
 
-export function strPriceToNum(string) {
+export function strPriceToCents(string) {
   if(!string) return 0;
-  return parseFloat(string.trim().replace("R$ ", "").replace(",", "."))
+  return parseFloat(string.trim().replace("R$ ", "").replace(",", "."))*100
 }
 
 export function numPriceToStr(num) {

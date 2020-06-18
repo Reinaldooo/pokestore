@@ -6,7 +6,7 @@ import { FaCartPlus } from "react-icons/fa"
 //
 import "./styles.scss";
 import ImgWithLoader from "../../stateless/ImgWithLoader";
-import { placeholder, strPriceToNum } from "../../services/utils";
+import { placeholder, strPriceToCents } from "../../services/utils";
 import { addProductCart } from "../../actions";
 
 function ProductCard({ product }) {
@@ -26,7 +26,7 @@ function ProductCard({ product }) {
     const handledProduct = {...product}
     handledProduct.size = handledProduct.sizes[0].size;
     handledProduct.sku = handledProduct.sizes[0].sku;
-    handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
+    handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
     toast.success("Oba! Produto adicionado! :D", {
       position: "top-right",

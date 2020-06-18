@@ -2,12 +2,10 @@ import { combineReducers } from 'redux'
 
 import productsReducer from './products';
 import cartReducer from './cart';
-import searchReducer from './search';
 
 const rootReducer = combineReducers({
   products: productsReducer,
-  cart: cartReducer,
-  search: searchReducer
+  cart: cartReducer
 })
 
 export default rootReducer;

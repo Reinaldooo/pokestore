@@ -1,20 +1,26 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 //
 import Drawer from "../../stateless/Drawer";
 import SearchInput from "../../statefull/SearchInput";
 import { closeSearchDrawer } from "../../actions"
 
 function Search() {
-  const dispatch = useDispatch();
-  const { shouldShow } = useSelector((state) => state.search);
+  const { shouldShowSearch, searchResult } = useSelector((state) => state.products);
 
-  return shouldShow ? (
+  return shouldShowSearch ? (
     <Drawer
       title="Pesquisa"
       closeFunction={closeSearchDrawer}
     >
       <SearchInput/>
+      {
+        searchResult && (
+        searchResult.length > 0 ?
+        searchResult.map((prod) => "ha") :
+        <p>Ops</p>
+        )
+      }
     </Drawer>
   ) : null;
 }

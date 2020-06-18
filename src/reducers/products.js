@@ -1,14 +1,19 @@
 import {
   PRODUCTS_FETCH_LOADING,
   PRODUCTS_FETCH_SUCCESS,
-  PRODUCTS_FETCH_ERROR
+  PRODUCTS_FETCH_ERROR,
+  OPEN_SEARCH_DRAWER,
+  CLOSE_SEARCH_DRAWER,
+  SEARCH_PRODUCTS
 } from "../actions"
 
 const initialState = {
   products: [],
   loading: true,
   fetchProductsError: false,
-  errorMessage: null
+  errorMessage: null,
+  searchResult: null,
+  shouldShowSearch: false
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -31,6 +36,22 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         fetchProductsError: true,
         errorMessage: payload
+      }
+    case OPEN_SEARCH_DRAWER:
+      return {
+        ...state,
+        shouldShow: true
+      }
+    case CLOSE_SEARCH_DRAWER:
+      return {
+        ...state,
+        shouldShow: false
+      }
+    case SEARCH_PRODUCTS:
+      console.log(payload)
+      return {
+        ...state,
+        shouldShow: false
       }
     default:
       return state;

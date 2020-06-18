@@ -7,6 +7,7 @@ export const CLOSE_CART_DRAWER = "CLOSE_CART_DRAWER";
 export const OPEN_CART_DRAWER = "OPEN_CART_DRAWER";
 
 export const addProductCart = (prod) => {
+  console.log(prod.actual_price)
   return {
     type: ADD_PRODUCT_CART,
     payload: prod

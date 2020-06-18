@@ -9,7 +9,7 @@ import { clearCart, closeCartDrawer } from "../../actions";
 
 function Cart() {
   const dispatch = useDispatch();
-  const { shouldShow, cart, totalPrice } = useSelector((state) => state.cart);
+  const { shouldShowCart, cart, totalPrice } = useSelector((state) => state.cart);
   const cartKeys = Object.keys(cart);
 
   const handleCheckout = () => {
@@ -23,9 +23,9 @@ function Cart() {
     });
   };
 
-  return shouldShow ? (
+  return shouldShowCart ? (
     <Drawer
-      title={totalPrice ? `Total: ${numPriceToStr(totalPrice)}` : ""}
+      title={totalPrice > 0 ? `Total: ${numPriceToStr(totalPrice/100)}` : ""}
       closeFunction={closeCartDrawer}
     >
       {totalPrice > 0 && (

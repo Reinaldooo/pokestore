@@ -10,7 +10,7 @@ import Loading from "../../stateless/Loading";
 import Footer from "../../stateless/Footer";
 import ProductSizes from "../../stateless/ProductSizes";
 import SimilarProducts from "../../stateless/SimilarProducts";
-import { placeholder, strPriceToNum } from "../../services/utils";
+import { placeholder, strPriceToCents } from "../../services/utils";
 import { addProductCart } from "../../actions";
 
 function Product() {
@@ -48,7 +48,7 @@ function Product() {
     const handledProduct = {...product}
     handledProduct.size = sizeSelected.size;
     handledProduct.sku = sizeSelected.sku;
-    handledProduct.actual_price = strPriceToNum(handledProduct.actual_price)
+    handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
     toast.success("Oba! Produto adicionado! :D", {
       position: "top-right",

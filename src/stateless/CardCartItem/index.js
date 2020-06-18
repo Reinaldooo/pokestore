@@ -30,7 +30,7 @@ function CardCartItem({ product, qty, totalProdPrice }) {
         <div className="card-cart-item__name">{product.name} </div>
         <span className="card-cart-item__tam">Tam.: {product.size}</span>
           <div className="card-cart-item__price">
-            Total: {numPriceToStr(totalProdPrice)}
+            Total: {numPriceToStr(totalProdPrice/100)}
           </div>
         </div>
         <div className="card-cart-item__buttons">

@@ -12,7 +12,7 @@ const initialState = {
   cart: {},
   totalPrice: 0,
   numProducts: 0,
-  shouldShow: false
+  shouldShowCart: false
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -37,10 +37,12 @@ const cartReducer = (state = initialState, action) => {
         numProducts: (state.numProducts += 1),
       };
     case REMOVE_PRODUCT_CART:
+      console.log(state.cart[payload].totalProdPrice)
       return {
         ...state,
         numProducts: state.numProducts - state.cart[payload].qty,
-        totalPrice: state.totalPrice - state.cart[payload].totalProdPrice,
+        totalPrice: state.totalPrice - state.cart[payload].totalProdPrice < 0 ?
+        0 : state.totalPrice - state.cart[payload].totalProdPrice,
         cart: {
           ...state.cart,
           [payload]: null,
@@ -92,17 +94,17 @@ const cartReducer = (state = initialState, action) => {
         cart: {},
         totalPrice: 0,
         numProducts: 0,
-        shouldShow: false,
+        shouldShowCart: false,
       };
     case CLOSE_CART_DRAWER:
       return {
         ...state,
-        shouldShow: false,
+        shouldShowCart: false,
       };
     case OPEN_CART_DRAWER:
       return {
         ...state,
-        shouldShow: true,
+        shouldShowCart: true,
       };
     default:
       return state;
