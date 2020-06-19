@@ -8,6 +8,7 @@ import Routes from "../../routes";
 import TopBar from "../TopBar";
 import Cart from "../Cart";
 import Search from "../Search";
+import Wishlist from "../Wishlist";
 import { setProductsFetchSuccess, setProductsFetchError } from "../../actions"
 import { createSlug, removerAcentos } from "../../services/utils"
 
@@ -35,7 +36,7 @@ function App() {
       <TopBar />
       <Routes />
       <Search/>
-      {/* <Wishlist/> */}
+      <Wishlist/>
       <Cart/>
       <ToastContainer />
     </div>

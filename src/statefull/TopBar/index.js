@@ -5,11 +5,16 @@ import { useSelector, useDispatch } from "react-redux"
 //
 import "./styles.scss"
 import Logo from "../../assets/logo.svg"
-import { openCartDrawer, openSearchDrawer } from '../../actions';
+import {
+  openCartDrawer,
+  openSearchDrawer,
+  openWishlistDrawer
+} from '../../actions';
 
 function TopBar() {
   const dispatch = useDispatch()
   const { numProducts } = useSelector(state => state.cart)
+  const { numWishlistProducts } = useSelector(state => state.wishlist)
   return (
     <div className="topbar-wrapper">
       <div className="container">
@@ -24,9 +29,12 @@ function TopBar() {
             >
               <FiSearch size="25px"/>
             </button>
-            <button className="topbar__button">
+            <button
+              className="topbar__button"
+              onClick={() => dispatch(openWishlistDrawer())}
+            >
               <span className="topbar__button__counter">
-                0
+                {numWishlistProducts}
               </span>
               <FiHeart size="25px"/>
             </button>
