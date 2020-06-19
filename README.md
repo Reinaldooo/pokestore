@@ -8,20 +8,12 @@ Fashion é uma loja online de moda feminina desenvolvida durente a Aceleração 
 
 #### Ferramentas em destaque no projeto:
 
-* ReactJS
-* React Router
-* Redux
-* Redux Persist
-* Redux Saga
-
-![Example](/docs/Example.png)
-
-#### Detalhe das ferramentas
-
 * `React router dom` é utilizado para viabilizar a navegação do usuário pelo app sem a necessidade de recarregar a página, sendo assim essa ferramenta garante a verdadeira experiência de uso de um SPA.
 * `Redux` é utilizado para criar uma fonte única de verdade no app, ou a chamada `loja`, que armazena os dados do app e somente atravez de ações enviadas para esta loja, as informações podem ser alteradas. Isso garante imutabilidade das informações e garante um app mais estável.
-* `Redux Persist` é utilizado para salvar os itens do carrinho e da wishlist na `localstorage` do navegador
-* `Redux-saga` é utilizado para tratar das ações assíncronas do app
+* `Redux Persist` é utilizado para salvar alguns items da loja na `localstorage` do navegador, garantindo assim que os dados estejam disponíveis mesmo se o usuário recarregar a página, ou fechar o navegador.
+* `Redux-saga` é utilizado para tratar e enviar as ações assíncronas enviadas à `loja`
+
+![Example](/docs/Example.png)
 
 ##### Rodar o projeto
 
