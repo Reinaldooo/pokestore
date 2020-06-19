@@ -3,7 +3,7 @@
 </p>
 
 <p  align="center">
-Loja online de roupas femininas
+Fashion é uma loja online de moda feminina desenvolvida durente a Aceleração ReactJS da Codenation.
 </p>
 
 #### Ferramentas em destaque no projeto:
@@ -15,6 +15,13 @@ Loja online de roupas femininas
 * Redux Saga
 
 ![Example](/docs/Example.png)
+
+##### Uso das ferramentas
+
+* Redux Persist
+Foi utilizado para salvar os itens do carrinho e da wishlist na `localstorage` do navegador
+* Redux-saga
+Foi utilizado para tratar das ações assíncronas do app.
 
 ##### Rodar o projeto
 
