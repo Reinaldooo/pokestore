@@ -5,9 +5,13 @@ import { BsTrash  } from 'react-icons/bs';
 //
 import "./styles.scss";
 import { placeholder, numPriceToStr } from "../../services/utils";
-import { removeProductCart, increaseProductCartQty,decreaseProductCartQty } from "../../actions";
+import {
+  removeProductCart,
+  increaseProductCartQty,
+  decreaseProductCartQty,
+} from "../../actions";
 
-function CardCartItem({ product, qty, totalProdPrice }) {
+function CardProductCart({ product, qty, totalProdPrice }) {
   const dispatch = useDispatch();
 
   const handleRemove = () => {
@@ -29,9 +33,9 @@ function CardCartItem({ product, qty, totalProdPrice }) {
         <div className="card-cart-item__text">
         <div className="card-cart-item__name">{product.name} </div>
         <span className="card-cart-item__tam">Tam.: {product.size}</span>
-          <div className="card-cart-item__price">
-            Total: {numPriceToStr(totalProdPrice/100)}
-          </div>
+        <div className="card-cart-item__price">
+          Total: {numPriceToStr(totalProdPrice/100)}
+        </div>
         </div>
         <div className="card-cart-item__buttons">
           <button onClick={handleIncrement}><FiPlusCircle/></button>
@@ -44,4 +48,4 @@ function CardCartItem({ product, qty, totalProdPrice }) {
   )
 }
 
-export default CardCartItem;
+export default CardProductCart;

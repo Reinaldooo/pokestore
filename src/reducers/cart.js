@@ -37,7 +37,6 @@ const cartReducer = (state = initialState, action) => {
         numProducts: (state.numProducts += 1),
       };
     case REMOVE_PRODUCT_CART:
-      console.log(state.cart[payload].totalProdPrice)
       return {
         ...state,
         numProducts: state.numProducts - state.cart[payload].qty,

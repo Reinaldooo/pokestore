@@ -45,19 +45,24 @@ const productsReducer = (state = initialState, action) => {
     case CLOSE_SEARCH_DRAWER:
       return {
         ...state,
-        shouldShowSearch: false
+        shouldShowSearch: false,
+        searchResult: null
       }
     case SEARCH_PRODUCTS:
+      if(!payload) {
+        return {
+          ...state,
+          searchResult: null
+        }
+      }
       const result = state.products.filter((prod) => {
         return prod.name.includes(payload.toUpperCase()) 
         ||
         prod.normalizedName.includes(payload.toUpperCase())
       })
-      console.log(result)
       return {
         ...state,
-        searchResult: result,
-        shouldShowSearch: false
+        searchResult: result
       }
     default:
       return state;
