@@ -24,6 +24,7 @@ function Search() {
           <CardProductHorizontal
             product={prod}
             key={prod.id}
+            closeFunction={closeSearchDrawer}
           />
         ))
         :

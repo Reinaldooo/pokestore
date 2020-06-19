@@ -4,16 +4,13 @@ import { useHistory } from "react-router-dom";
 //
 import "./styles.scss";
 import { placeholder } from "../../services/utils";
-import {
-  closeSearchDrawer
-} from "../../actions";
 
-function CardProductHorizontal({ product }) {
+function CardProductHorizontal({ product, closeFunction }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleMoreInfo = () => {
-    dispatch(closeSearchDrawer())
+    dispatch(closeFunction())
     history.push(`/produto/${product.id}`)
   }
 

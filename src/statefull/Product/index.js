@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { FiHeart, FiArrowLeftCircle } from 'react-icons/fi';
 import { toast } from 'react-toastify';
-// import { FaHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 //
 import "./styles.scss";
 import Loading from "../../stateless/Loading";
@@ -11,7 +11,11 @@ import Footer from "../../stateless/Footer";
 import ProductSizes from "../../stateless/ProductSizes";
 import SimilarProducts from "../../stateless/SimilarProducts";
 import { placeholder, strPriceToCents } from "../../services/utils";
-import { addProductCart } from "../../actions";
+import {
+  addProductCart,
+  addProductWishlist,
+  removeProductWishlist
+} from "../../actions";
 
 function Product() {
   const dispatch = useDispatch();
@@ -20,10 +24,14 @@ function Product() {
   const { products, fetchProductsError } = useSelector(
     (state) => state.products
   );
+  const { wishlist } = useSelector(
+    (state) => state.wishlist
+  );
   // products.find wasn't used here because the index is needed on
   // genSimilar() function
   const prodIdx = products.findIndex((prod) => (prod.id === productId));
   const product = products[prodIdx];
+  const wishlisted = wishlist.find(item => item.id === product.id)
   const availableSizes = product?.sizes.filter((size) => size.available);
   const [sizeSelected, setSizeSelected] = useState(null);
 
@@ -67,6 +75,14 @@ function Product() {
     setSizeSelected(size);
   };
 
+  const handleWishlist = () => {
+    if (wishlisted) {
+      dispatch(removeProductWishlist(product))
+      return
+    }
+    dispatch(addProductWishlist(product))
+  };
+
   useEffect(() => {
     if(availableSizes?.length === 1) setSizeSelected(availableSizes[0])
   }, [availableSizes])
@@ -92,7 +108,13 @@ function Product() {
           </button>
         </div>
         <div className="product__add-wishlist">
-          <button><FiHeart/></button>
+          <button onClick={handleWishlist}>
+            {
+              wishlisted ?
+              <FaHeart/> :
+              <FiHeart/>
+            }
+          </button>
         </div>
         <figure className="product__image">
           <img

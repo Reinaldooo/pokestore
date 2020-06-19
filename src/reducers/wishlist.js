@@ -2,6 +2,7 @@ import {
   OPEN_WISHLIST_DRAWER,
   CLOSE_WISHLIST_DRAWER,
   ADD_PRODUCT_WISHLIST,
+  REMOVE_PRODUCT_WISHLIST
 } from "../actions"
 
 const initialState = {
@@ -27,7 +28,14 @@ const wishlistReducer = (state = initialState, action) => {
     case ADD_PRODUCT_WISHLIST:
       return {
         ...state,
-        wishlist: state.wishlist.push(payload)
+        wishlist: state.wishlist.concat(payload),
+        numWishlistProducts: state.numWishlistProducts + 1
+      }
+    case REMOVE_PRODUCT_WISHLIST:
+      return {
+        ...state,
+        wishlist: state.wishlist.filter((item) => item.id !== payload.id),
+        numWishlistProducts: state.numWishlistProducts - 1
       }
     default:
       return state;

@@ -21,6 +21,7 @@ function Wishlist() {
           <CardProductHorizontal
             product={prod}
             key={prod.id}
+            closeFunction={closeWishlistDrawer}
           />
         ))
         :
