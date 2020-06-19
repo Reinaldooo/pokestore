@@ -14,13 +14,7 @@ function Cart() {
 
   const handleCheckout = () => {
     dispatch(clearCart());
-    toast.success("Compra finalizada! :)", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-    });
+    toast.success("Compra finalizada! :)");
   };
 
   return shouldShowCart ? (

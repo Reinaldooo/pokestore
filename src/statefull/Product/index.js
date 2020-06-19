@@ -44,13 +44,7 @@ function Product() {
   
   const handleAddCart = () => {
     if (!sizeSelected) {
-      toast.error("Por favor selecione um tamanho!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        progress: undefined,
-      });
+      toast.error("Por favor selecione um tamanho!");
       return;
     }
     const handledProduct = {...product}
@@ -58,13 +52,7 @@ function Product() {
     handledProduct.sku = sizeSelected.sku;
     handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
-    toast.success("Oba! Produto adicionado! :D", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-    });
+    toast.success("Oba! Produto adicionado!");
   };
 
   const handleSizeSelect = (size) => {

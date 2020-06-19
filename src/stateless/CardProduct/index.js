@@ -28,13 +28,7 @@ function ProductCard({ product }) {
     handledProduct.sku = handledProduct.sizes[0].sku;
     handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
     dispatch(addProductCart(handledProduct))
-    toast.success("Oba! Produto adicionado! :D", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-    });
+    toast.success("Oba! Produto adicionado!");
   }
 
   return (
