@@ -31,7 +31,7 @@ function Product() {
   // genSimilar() function
   const prodIdx = products.findIndex((prod) => (prod.id === productId));
   const product = products[prodIdx];
-  const wishlisted = wishlist.find(item => item.id === product.id)
+  const wishlisted = wishlist.find(item => item.id === product?.id)
   const availableSizes = product?.sizes.filter((size) => size.available);
   const [sizeSelected, setSizeSelected] = useState(null);
 

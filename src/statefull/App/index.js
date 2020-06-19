@@ -9,26 +9,13 @@ import TopBar from "../TopBar";
 import Cart from "../Cart";
 import Search from "../Search";
 import Wishlist from "../Wishlist";
-import { setProductsFetchSuccess, setProductsFetchError } from "../../actions"
-import { createSlug, removerAcentos } from "../../services/utils"
+import { productsFetch } from "../../actions"
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch("https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog")
-    .then((data) => data.json())
-    .then((data) => {
-      // Create some unique id for the products since a real API
-      // would have it
-      data.forEach(product => {
-        product["id"] = createSlug(product.name)+"-"+product.code_color;
-        product["normalizedName"] = removerAcentos(product.name);
-      })
-      dispatch(setProductsFetchSuccess(data))
-    })
-    .catch((error) => dispatch(setProductsFetchError(error)))
-
+    dispatch(productsFetch())
   }, [dispatch])
 
   return (

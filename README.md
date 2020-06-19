@@ -12,6 +12,7 @@ Loja online de roupas femininas
 * React Router
 * Redux
 * Redux Persist
+* Redux Saga
 
 ![Example](/docs/Example.png)
 
