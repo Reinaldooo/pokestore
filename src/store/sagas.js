@@ -6,6 +6,8 @@ function fetchProducts() {
   return fetch("https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog")
     .then((data) => data.json())
     .then((data) => {
+      // filter to avoid empty results
+      data = data.filter((item) => item.name)
       // Create some unique id for the products since a real API
       // would have it
       data.forEach((product) => {
