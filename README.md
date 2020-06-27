@@ -17,7 +17,7 @@ Fashion é uma loja online de moda feminina desenvolvida durente a Aceleração 
 
 ##### Rodar o projeto
 
-* Para rodar a versão hospedada, clique [aqui](https://fashion-reinaldo.netlify.app/).
+* Para rodar a versão hospedada, clique [aqui](https://fashion.reinaldowft.com/).
 
 ##### Para rodar na sua máquina:
 
