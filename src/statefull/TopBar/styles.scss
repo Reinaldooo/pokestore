@@ -1,5 +1,6 @@
 .topbar-wrapper {
   background-color: #fff;
+  box-shadow: 0 2px 30px 5px rgba(0,0,0,.1);
 }
 
 .topbar {
@@ -39,7 +40,7 @@
       position: absolute;
       right: -5px;
       top: -5px;
-      background-color: #e3566e;
+      background-color: tomato;
       border-radius: 50%;
       height: 18px;
       width: 18px;

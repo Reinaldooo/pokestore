@@ -1,13 +1,15 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects';
 
 function fetchProducts() {
-  return fetch("https://api.reinaldowft.com/fashion")
+  return fetch("https://api.reinaldowft.com/pokestore?page=1&limit=25")
     .then((data) => data.json())
+    .then((data) => data.results)
 }
 
 function* callFetchProducts() {
   try {
     const products = yield call(fetchProducts)
+    console.log(products)
     yield put({ type: 'PRODUCTS_FETCH_SUCCESS', payload: products })
   }
   catch(error) {

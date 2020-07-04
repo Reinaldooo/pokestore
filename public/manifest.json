@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PokeStore",
+  "name": "Store for Pokemon cards",
   "icons": [
     {
       "src": "favicon.ico",

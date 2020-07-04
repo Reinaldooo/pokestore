@@ -8,7 +8,7 @@ import rootSaga from "./sagas";
 import rootReducer from "../reducers";
 
 const persistConfig = {
-  key: "fashionStorage",
+  key: "pokestoreStorage",
   storage,
   blacklist: ["products"],
 };

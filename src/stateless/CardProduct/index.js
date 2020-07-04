@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { FaCartPlus } from "react-icons/fa"
 //
-import "./styles.scss";
+import * as S from "./styles"
 import ImgWithLoader from "../../stateless/ImgWithLoader";
 import { placeholder, strPriceToCents } from "../../services/utils";
 import { addProductCart } from "../../actions";
@@ -12,55 +12,51 @@ import { addProductCart } from "../../actions";
 function ProductCard({ product }) {
   const dispatch = useDispatch()
   const {
-    image,
-    name,
-    actual_price,
-    installments,
     id,
-    discount_percentage,
-    regular_price,
-    sizes
+    name,
+    color,
+    sprite,
+    types,
+    price
   } = product;
 
   const handleCartClick = () => {
-    const handledProduct = {...product}
-    handledProduct.size = handledProduct.sizes[0].size;
-    handledProduct.sku = handledProduct.sizes[0].sku;
-    handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
-    dispatch(addProductCart(handledProduct))
-    toast.success("Oba! Produto adicionado!");
+    // const handledProduct = {...product}
+    // handledProduct.size = handledProduct.sizes[0].size;
+    // handledProduct.sku = handledProduct.sizes[0].sku;
+    // handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
+    // dispatch(addProductCart(handledProduct))
+    // toast.success("Oba! Produto adicionado!");
   }
 
   return (
-    <div className="card-wrapper">
-      {
-        sizes[0].size === "U" &&
-        <span className="card__add" onClick={handleCartClick}>
+    <S.CardWrapper>
+        <S.CardAddCartButton onClick={handleCartClick}>
           <FaCartPlus/>
-        </span>
-      }
+        </S.CardAddCartButton>
       <Link to={`/produto/${id}`}>
-        <div className="card">
-          {
+        <S.Card color={color}>
+          {/* {
             discount_percentage &&
             <span className="card__discount">-{discount_percentage}</span>
-          }
-          <figure className="card__image">
-            <ImgWithLoader src={image ? image : placeholder} alt={name} />
-          </figure>
+          } */}
+          <S.CardImage className="card__image">
+            <ImgWithLoader src={sprite ? sprite : placeholder} alt={name} />
+          </S.CardImage>
           <div className="card__info">
-            <div className="card__name">{name}</div>
-            <div className="card__values">
+            <S.CardName color={color}>{name}</S.CardName>
+            <S.CardTypes color={color}>
+              {types.map(({name}) => <span key={name}>{name}</span>)}
+            </S.CardTypes>
+            <S.CardValues>
               <span className="card__price">
-                {discount_percentage && <span>{regular_price}</span>}
-                {actual_price}
+                R$ {price},00
               </span>
-              <span className="card__installments">{installments}</span>
-            </div>
+            </S.CardValues>
           </div>
-        </div>
+        </S.Card>
       </Link>
-    </div>
+    </S.CardWrapper>
   );
 }
 
