@@ -34,12 +34,7 @@ function ProductCard({ product }) {
         <S.CardAddCartButton onClick={handleCartClick}>
           <FaCartPlus/>
         </S.CardAddCartButton>
-      <Link to={`/produto/${id}`}>
         <S.Card color={color}>
-          {/* {
-            discount_percentage &&
-            <span className="card__discount">-{discount_percentage}</span>
-          } */}
           <S.CardImage className="card__image">
             <ImgWithLoader src={sprite ? sprite : placeholder} alt={name} />
           </S.CardImage>
@@ -55,7 +50,6 @@ function ProductCard({ product }) {
             </S.CardValues>
           </div>
         </S.Card>
-      </Link>
     </S.CardWrapper>
   );
 }
