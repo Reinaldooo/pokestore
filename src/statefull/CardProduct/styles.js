@@ -122,7 +122,7 @@ export const CardAddWishlistButton = styled.div`
   z-index: 1;
   cursor: pointer;
   @media screen and (max-width: 768px) {
-    right: 10px;
+    left: 10px;
     top: 10px;
   }
   transition: transform .2s;
@@ -136,13 +136,12 @@ export const CardTypes = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding: 0 10px;
-  min-width: 100%;
 
   & span {
     text-transform: uppercase;
     border: ${(props) => props.color} solid 2px;
     border-radius: 5px;
-    padding: 5px 15px;
+    padding: 5px 8px;
     font-size: 12px;
     font-weight: bold;
     color: ${(props) => props.color};
