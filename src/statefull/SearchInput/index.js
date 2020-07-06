@@ -3,7 +3,7 @@ import { DebounceInput } from "react-debounce-input";
 import { useDispatch } from "react-redux";
 //
 import "./styles.scss";
-import { searchProducts } from "../../actions";
+import { setSearchingProducts } from "../../actions";
 
 function SearchInput() {
   const dispatch = useDispatch();
@@ -14,8 +14,8 @@ function SearchInput() {
       minLength={1}
       className="search-input"
       debounceTimeout={800}
-      onChange={({ target: { value } }) => dispatch(searchProducts(value))}
-      placeholder="Do que você precisa hoje?"
+      onChange={({ target: { value } }) => dispatch(setSearchingProducts(value))}
+      placeholder="Qual carta você procura?"
     />
   );
 }

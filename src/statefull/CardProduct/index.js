@@ -1,18 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { FaCartPlus } from "react-icons/fa"
+import { FaCartPlus, FaHeart } from "react-icons/fa"
+import { FiHeart } from "react-icons/fi"
 //
 import * as S from "./styles"
 import ImgWithLoader from "../../stateless/ImgWithLoader";
-import { placeholder, strPriceToCents } from "../../services/utils";
-import { addProductCart } from "../../actions";
+import { placeholder } from "../../services/utils";
+import {
+  addProductCart,
+  addProductWishlist,
+  removeProductWishlist
+} from "../../actions";
 
-function ProductCard({ product }) {
+function ProductCard({ product, wishlist }) {
+  const { wishlistedIds } = useSelector(state => state.wishlist)
+  const wishlisted = wishlistedIds?.includes(product.id)
   const dispatch = useDispatch()
   const {
-    id,
     name,
     color,
     sprite,
@@ -21,16 +26,23 @@ function ProductCard({ product }) {
   } = product;
 
   const handleCartClick = () => {
-    // const handledProduct = {...product}
-    // handledProduct.size = handledProduct.sizes[0].size;
-    // handledProduct.sku = handledProduct.sizes[0].sku;
-    // handledProduct.actual_price = strPriceToCents(handledProduct.actual_price)
-    // dispatch(addProductCart(handledProduct))
-    // toast.success("Oba! Produto adicionado!");
+    dispatch(addProductCart(product))
+    toast.success("Oba! Produto adicionado!");
   }
 
+  const handleWishlist = () => {
+    if (wishlisted) {
+      dispatch(removeProductWishlist(product))
+      return
+    }
+    dispatch(addProductWishlist(product))
+  };
+
   return (
-    <S.CardWrapper>
+    <S.CardWrapper wishlist={wishlist}>
+        <S.CardAddWishlistButton onClick={handleWishlist}>
+          {wishlisted ? <FaHeart color="tomato"/> : <FiHeart/>}
+        </S.CardAddWishlistButton>
         <S.CardAddCartButton onClick={handleCartClick}>
           <FaCartPlus/>
         </S.CardAddCartButton>

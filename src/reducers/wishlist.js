@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   wishlist: [],
+  wishlistedIds: [],
   numWishlistProducts: 0,
   shouldShowWishlist: false
 };
@@ -29,12 +30,14 @@ const wishlistReducer = (state = initialState, action) => {
       return {
         ...state,
         wishlist: state.wishlist.concat(payload),
+        wishlistedIds: state.wishlistedIds.concat(payload.id),
         numWishlistProducts: state.numWishlistProducts + 1
       }
     case REMOVE_PRODUCT_WISHLIST:
       return {
         ...state,
         wishlist: state.wishlist.filter((item) => item.id !== payload.id),
+        wishlistedIds: state.wishlistedIds.filter((id) => id !== payload.id),
         numWishlistProducts: state.numWishlistProducts - 1
       }
     default:

@@ -10,7 +10,7 @@ import rootReducer from "../reducers";
 const persistConfig = {
   key: "pokestoreStorage",
   storage,
-  blacklist: ["products"],
+  blacklist: ["products", "wishlist", "cart"],
 };
 
 const sagaMiddleware = createSagaMiddleware();

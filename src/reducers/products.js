@@ -4,7 +4,7 @@ import {
   PRODUCTS_FETCH_ERROR,
   OPEN_SEARCH_DRAWER,
   CLOSE_SEARCH_DRAWER,
-  SEARCH_PRODUCTS
+  SEARCHING_PRODUCTS
 } from "../actions"
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   fetchProductsError: false,
   errorMessage: null,
   searchResult: null,
-  shouldShowSearch: false
+  searching: false
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -29,6 +29,7 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        searching: false,
         products: payload
       }
     case PRODUCTS_FETCH_ERROR:
@@ -48,21 +49,10 @@ const productsReducer = (state = initialState, action) => {
         shouldShowSearch: false,
         searchResult: null
       }
-    case SEARCH_PRODUCTS:
-      if(!payload) {
-        return {
-          ...state,
-          searchResult: null
-        }
-      }
-      const result = state.products.filter((prod) => {
-        return prod.name.includes(payload.toUpperCase()) 
-        ||
-        prod.normalizedName.includes(payload.toUpperCase())
-      })
+    case SEARCHING_PRODUCTS:
       return {
         ...state,
-        searchResult: result
+        searching: true
       }
     default:
       return state;

@@ -1,13 +1,11 @@
 import React from 'react';
-import { FiSearch, FiHeart, FiShoppingCart } from 'react-icons/fi';
-import { Link } from "react-router-dom"
+import { FiHeart, FiShoppingCart } from 'react-icons/fi';
 import { useSelector, useDispatch } from "react-redux"
 //
 import "./styles.scss"
 import Logo from "../../assets/logo.svg"
 import {
   openCartDrawer,
-  openSearchDrawer,
   openWishlistDrawer
 } from '../../actions';
 
@@ -19,16 +17,8 @@ function TopBar() {
     <div className="topbar-wrapper">
       <div className="container">
         <div className="topbar">
-          <Link to="/">
             <img src={Logo} alt="logo" className="topbar__logo"/>
-          </Link>
           <div className="topbar__buttons">
-            <button
-              className="topbar__button"
-              onClick={() => dispatch(openSearchDrawer())}
-            >
-              <FiSearch size="25px"/>
-            </button>
             <button
               className="topbar__button"
               onClick={() => dispatch(openWishlistDrawer())}

@@ -1,5 +1,6 @@
 .main {
   width: 100%;
+  text-align: center;
 
   &__featured {
     height: 20%;
@@ -22,6 +23,7 @@
     flex-wrap: wrap;
     padding: 2rem 1rem;
     width: 100%;
-    margin-top: -5px;    
+    margin-top: -5px;
+    min-height: 77vh;
   }
 }

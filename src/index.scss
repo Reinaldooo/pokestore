@@ -26,9 +26,9 @@ code {
 }
 
 .fetch-error {
-  text-align: center;
-  margin: 2rem;
+  display: block;
+  margin: 2rem auto;
   font-size: 20px;
   font-weight: 700;
-  color: #e3566e;
+  color: tomato;
 }

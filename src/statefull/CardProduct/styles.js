@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardWrapper = styled.div`
-  flex: 0 0 20%;
+  flex: ${props => props.wishlist ? "0 0 50%" : "0 0 20%"};
   padding: 15px;
   position: relative;
 
@@ -11,7 +11,7 @@ export const CardWrapper = styled.div`
   }
 
   @media screen and (max-width: 1100px) {
-    flex: 0 0 25%;
+    flex: ${props => props.wishlist ? "0 0 50%" : "0 0 25%"};
     padding: 7px;
   }
   @media screen and (max-width: 768px) {
@@ -104,6 +104,31 @@ export const CardAddCartButton = styled.div`
   @media screen and (max-width: 768px) {
     right: 10px;
     top: 10px;
+  }
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.10);
+  }
+`;
+
+export const CardAddWishlistButton = styled.div`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  padding: 5px;
+  color: lightgray;
+  font-size: 30px;
+  z-index: 1;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    right: 10px;
+    top: 10px;
+  }
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.10);
   }
 `;
 
