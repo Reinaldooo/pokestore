@@ -14,7 +14,7 @@ function SearchInput() {
       minLength={1}
       className="search-input"
       debounceTimeout={800}
-      onChange={({ target: { value } }) => dispatch(setSearchingProducts(value))}
+      onChange={({ target: { value } }) => dispatch(setSearchingProducts(value.toLowerCase()))}
       placeholder="Qual carta você procura?"
     />
   );
