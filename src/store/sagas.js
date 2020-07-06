@@ -1,13 +1,13 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects';
 
 function fetchProducts() {
-  return fetch("http://localhost:3501/pokestore?limit=25&page=6")
+  return fetch("https://api.reinaldowft.com/pokestore?limit=25&page=6")
     .then((data) => data.json())
     .then((data) => data.results)
 }
 
 function searchProducts(payload) {
-  return fetch("http://localhost:3501/pokestore/search", {
+  return fetch("https://api.reinaldowft.com/pokestore/search", {
     method: "POST",
     headers: {
       "content-type": "application/json"

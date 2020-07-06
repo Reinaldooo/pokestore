@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 //
 import Drawer from "../../stateless/Drawer";
 import CardProductCart from "../../stateless/CardProductCart";
-import { numPriceToStr } from "../../services/utils";
 import { clearCart, closeCartDrawer } from "../../actions";
 
 function Cart() {
@@ -19,7 +18,7 @@ function Cart() {
 
   return shouldShowCart ? (
     <Drawer
-      title={totalPrice > 0 ? `Total: ${numPriceToStr(totalPrice/100)}` : ""}
+      title={totalPrice > 0 ? `Total: ${totalPrice},00` : ""}
       closeFunction={closeCartDrawer}
     >
       {totalPrice > 0 && (

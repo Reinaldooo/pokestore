@@ -4,7 +4,7 @@ import { FiPlusCircle, FiMinusCircle  } from 'react-icons/fi';
 import { BsTrash  } from 'react-icons/bs';
 //
 import "./styles.scss";
-import { placeholder, numPriceToStr } from "../../services/utils";
+import { placeholder } from "../../services/utils";
 import {
   removeProductCart,
   increaseProductCartQty,
@@ -15,26 +15,25 @@ function CardProductCart({ product, qty, totalProdPrice }) {
   const dispatch = useDispatch();
 
   const handleRemove = () => {
-    dispatch(removeProductCart(product.sku))
+    dispatch(removeProductCart(product.id))
   }
   const handleIncrement = () => {
-    dispatch(increaseProductCartQty(product.sku))
+    dispatch(increaseProductCartQty(product.id))
   }
   const handleDecrement = () => {
-    dispatch(decreaseProductCartQty(product.sku))
+    dispatch(decreaseProductCartQty(product.id))
   }
 
   return (
     <div className="card-cart-item">
       <figure className="card-cart-item__image">
-        <img src={product.image || placeholder} alt={product.name}/>
+        <img src={product.sprite || placeholder} alt={product.name}/>
       </figure>
       <div className="card-cart-item__info">
         <div className="card-cart-item__text">
         <div className="card-cart-item__name">{product.name} </div>
-        <span className="card-cart-item__tam">Tam.: {product.size}</span>
         <div className="card-cart-item__price">
-          Total: {numPriceToStr(totalProdPrice/100)}
+          Total: {totalProdPrice},00
         </div>
         </div>
         <div className="card-cart-item__buttons">

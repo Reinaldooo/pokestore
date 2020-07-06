@@ -17,7 +17,6 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
-  console.log(action)
   let { product } = state.cart[payload] || {}
   //
   switch (type) {
@@ -27,6 +26,7 @@ const cartReducer = (state = initialState, action) => {
         cart: {
           ...state.cart,
           [payload.id]: {
+            qty: state.cart[payload.id] ? state.cart[payload.id].qty + 1 : 1,
             product: payload,
             totalProdPrice: state.cart[payload.id]
               ? state.cart[payload.id].totalProdPrice + payload.price
@@ -51,14 +51,14 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         numProducts: state.numProducts + 1,
-        totalPrice: state.totalPrice + product.actual_price,
+        totalPrice: state.totalPrice + product.price,
         cart: {
           ...state.cart,
           [payload]: {
             ...state.cart[payload],
             qty: state.cart[payload].qty + 1,
             totalProdPrice:
-              state.cart[payload].totalProdPrice + product.actual_price,
+              state.cart[payload].totalProdPrice + product.price,
           },
         },
       };
@@ -77,14 +77,14 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         numProducts: state.numProducts - 1,
-        totalPrice: state.totalPrice - product.actual_price,
+        totalPrice: state.totalPrice - product.price,
         cart: {
           ...state.cart,
           [payload]: {
             ...state.cart[payload],
             qty: state.cart[payload].qty - 1,
             totalProdPrice:
-              state.cart[payload].totalProdPrice - product.actual_price,
+              state.cart[payload].totalProdPrice - product.price,
           },
         },
       };
