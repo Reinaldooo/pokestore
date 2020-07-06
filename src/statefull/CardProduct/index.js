@@ -56,9 +56,9 @@ function ProductCard({ product, wishlist }) {
               {types.map(({name}) => <span key={name}>{name}</span>)}
             </S.CardTypes>
             <S.CardValues>
-              <span className="card__price">
+              <S.CardPrice>
                 R$ {price},00
-              </span>
+              </S.CardPrice>
             </S.CardValues>
           </div>
         </S.Card>

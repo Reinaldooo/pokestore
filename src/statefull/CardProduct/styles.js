@@ -153,3 +153,8 @@ export const CardValues = styled.div`
   padding: 0 10px;
   font-size: 1rem;
 `;
+
+export const CardPrice = styled.span`
+  font-weight: bold;
+  color: gray;
+`;
