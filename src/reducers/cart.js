@@ -17,6 +17,7 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
+  console.log(action)
   let { product } = state.cart[payload] || {}
   //
   switch (type) {
@@ -25,15 +26,14 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          [payload.sku]: {
-            qty: state.cart[payload.sku] ? state.cart[payload.sku].qty + 1 : 1,
+          [payload.id]: {
             product: payload,
-            totalProdPrice: state.cart[payload.sku]
-              ? state.cart[payload.sku].totalProdPrice + payload.actual_price
-              : payload.actual_price,
+            totalProdPrice: state.cart[payload.id]
+              ? state.cart[payload.id].totalProdPrice + payload.price
+              : payload.price,
           },
         },
-        totalPrice: state.totalPrice + payload.actual_price,
+        totalPrice: state.totalPrice + payload.price,
         numProducts: (state.numProducts += 1),
       };
     case REMOVE_PRODUCT_CART:
