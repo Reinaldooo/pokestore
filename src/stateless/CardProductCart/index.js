@@ -37,9 +37,9 @@ function CardProductCart({ product, qty, totalProdPrice }) {
         </div>
         </div>
         <div className="card-cart-item__buttons">
-          <button onClick={handleIncrement}><FiPlusCircle/></button>
-          <span>{qty}</span>
           <button onClick={handleDecrement}><FiMinusCircle/></button>
+          <span>{qty}</span>
+          <button onClick={handleIncrement}><FiPlusCircle/></button>
           <button onClick={handleRemove}><BsTrash/></button>
         </div>
       </div>

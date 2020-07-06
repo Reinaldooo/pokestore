@@ -6,18 +6,26 @@ import "./styles.scss"
 import Logo from "../../assets/logo.svg"
 import {
   openCartDrawer,
-  openWishlistDrawer
+  openWishlistDrawer,
+  setProductsFetchLoading,
+  productsFetch
 } from '../../actions';
 
 function TopBar() {
   const dispatch = useDispatch()
   const { numProducts } = useSelector(state => state.cart)
   const { numWishlistProducts } = useSelector(state => state.wishlist)
+
+  const handleReload = () => {
+    dispatch(setProductsFetchLoading())
+    dispatch(productsFetch())
+  }
+
   return (
     <div className="topbar-wrapper">
       <div className="container">
         <div className="topbar">
-            <img src={Logo} alt="logo" className="topbar__logo"/>
+            <img src={Logo} alt="logo" className="topbar__logo" onClick={handleReload}/>
           <div className="topbar__buttons">
             <button
               className="topbar__button"
