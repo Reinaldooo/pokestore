@@ -142,7 +142,7 @@ export const CardTypes = styled.div`
     border: ${(props) => props.color} solid 2px;
     border-radius: 5px;
     padding: 5px 8px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: ${(props) => props.color};
   }
